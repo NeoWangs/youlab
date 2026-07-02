@@ -8,7 +8,7 @@ bundle install
 bundle exec jekyll serve
 ```
 
-然后打开 `http://127.0.0.1:4000`。原站链接仍保留 `.htm` 路径，例如 `Research.htm`、`zh/Research.htm`；首页以 `index.html` 和 `zh/index.html` 为正式入口。
+然后打开 `http://127.0.0.1:4000`。
 
 ## 部署到 GitHub Pages
 
