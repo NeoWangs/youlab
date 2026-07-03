@@ -1,0 +1,44 @@
+{% assign p = page.root_prefix | default: '' %}
+{% assign research = site.data.research[page.lang] | default: site.data.research.en %}
+
+<div class="main">
+  <div class="researchList pd90 wrap_box">
+    <div class="title_box">
+      <h3>{{ research.heading }}</h3>
+      <hr size="2"{% if page.lang == 'zh' %} color="#1b4c8f"{% endif %}>
+
+      {% for section in research.sections %}
+        {% if section.title %}
+          <h4>{{ section.title }}</h4>
+        {% endif %}
+
+        {% for paragraph in section.paragraphs %}
+          <p>{{ paragraph }}</p>
+        {% endfor %}
+
+        {% for project in section.projects %}
+          <h5>· {{ project }}</h5>
+        {% endfor %}
+      {% endfor %}
+    </div>
+
+    <ul class="content_list">
+      {% for card in research.cards %}
+        {% assign card_href = card.href | default: 'javascript:;' %}
+        {% if card.href_is_asset %}
+          {% assign card_href = p | append: card.href %}
+        {% endif %}
+        <li>
+          <div class="item_l">
+            <img src="{{ p }}{{ card.image }}" alt="{{ card.alt | escape }}" loading="lazy" decoding="async">
+          </div>
+          <div class="item_r">
+            <h4>{{ card.title }}</h4>
+            <a href="{{ card_href }}" class="enCont">{{ research.cta.en }}</a>
+            <a href="{{ card_href }}" class="zhCont">{{ research.cta.zh }}</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
