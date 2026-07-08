@@ -1,0 +1,21 @@
+{% assign mathjax_cdn = site.mathjax.cdn | default: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js' %}
+<script>
+  window.MathJax = {
+    loader: {
+      load: ["[tex]/ams", "[tex]/mhchem"]
+    },
+    tex: {
+      inlineMath: [["$", "$"], ["\\(", "\\)"]],
+      displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+      processEscapes: true,
+      packages: {"[+]": ["ams", "mhchem"]}
+    },
+    svg: {
+      fontCache: "global"
+    },
+    options: {
+      skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="{{ mathjax_cdn }}"></script>

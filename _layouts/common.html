@@ -16,9 +16,18 @@
     {% if page.article_checklist %}
       <link rel="stylesheet" type="text/css" href="{{ p }}assets/css/article-checklist.css">
     {% endif %}
+    {% assign mathjax_enabled = site.mathjax.enabled %}
+    {% if page.mathjax == false %}
+      {% assign mathjax_enabled = false %}
+    {% elsif page.mathjax %}
+      {% assign mathjax_enabled = true %}
+    {% endif %}
     <script src="{{ p }}assets/js/jquery-2.1.4.min.js"></script>
     <script src="{{ p }}assets/vendor/swiper/swiper-3.4.2.min.js"></script>
     <script src="{{ p }}assets/js/mobile-nav.js" defer></script>
+    {% if mathjax_enabled %}
+      {% include mathjax.html %}
+    {% endif %}
     {% if page.article_checklist %}
       <script src="{{ p }}assets/js/article-checklist.js" defer></script>
     {% endif %}
